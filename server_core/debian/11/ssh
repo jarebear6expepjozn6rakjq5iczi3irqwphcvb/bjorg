@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+HISTSIZE=0
+set +o history
+
+file=/etc/ssh/sshd_config
+
+# do not allow root to log in
+sed -i 's/PermitRootLogin .*/PermitRootLogin no/' $file
+
+# do not allow password authentication
+sed -i 's/#PasswordAuthentication .*/PasswordAuthentication no/' $file
