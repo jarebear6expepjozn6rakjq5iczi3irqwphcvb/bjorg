@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+HISTSIZE=0
+set +o history
+
+apt update && apt install -y nginx certbot python-certbot-nginx
+
+# back up files before fsking them
+mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.before.bjorg
+mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.before.bjorg
+
+# spew the template files in to place
+cat templates/index.html > /var/www/html/index.html
+cat templates/nginx/nginx.conf > /etc/nginx/nginx.conf
+cat templates/nginx/sites-available/default > /etc/nginx/sites-available/default
+# update FQDN
+sed -i 's/server_name _.*/server_name '"$FQDN"';/' /etc/nginx/sites-available/default
+
+# update firewall rules to allow connection
+ufw allow 80/tcp
+ufw allow 443/tcp

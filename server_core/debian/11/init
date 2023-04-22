@@ -5,7 +5,7 @@ set +o history
 #
 # This script kickstarts the build process for a basic server instance.
 #
-# OS: debian 10
+# OS: debian 11
 
 
 # Make sure args are supplied
@@ -25,24 +25,26 @@ PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 63)
 apt-get update && apt-get -y upgrade
 apt-get install -y unattended-upgrades build-essential git gnupg autossh
 
+# Initiate firewall with UFW.
+# Each module is in charge of their network access. Rules are
+# enabled at the end of the script.
+yes | ufw reset
+
 # Do hosts things
-. hosts.sh
+. hosts
 
 # Do users stuff
-. users.sh
+. users
 
 # Lock SSH access down
-. secure_ssh.sh
+. ssh
 
-# Activate firewall
-. firewall.sh
-
-read -p "Web w/ PHP? " -n 1 -r
+read -p "Web?" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  . web.sh
-  . php.sh
+  . nginx 
+  . php
 fi
 
 read -p "MySQL? " -n 1 -r
@@ -58,3 +60,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   . python.sh
 fi
+
+echo "Activating firewall"
+yes | ufw enable

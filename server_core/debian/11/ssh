@@ -9,3 +9,12 @@ sed -i 's/PermitRootLogin .*/PermitRootLogin no/' $file
 
 # do not allow password authentication
 sed -i 's/#PasswordAuthentication .*/PasswordAuthentication no/' $file
+
+# resist default port
+sed -i 's/#Port .*/Port '"$SSH_PORT"'/' $file
+
+# explicitly set access interface
+sed -i 's/#AddressFamily .*/#AddressFamily inet/' $file
+
+# update firewall rules to allow connection
+ufw allow $SSH_PORT/tcp
