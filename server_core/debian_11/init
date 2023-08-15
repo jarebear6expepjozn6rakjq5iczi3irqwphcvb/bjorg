@@ -3,7 +3,7 @@ HISTSIZE=0
 set +o history
 
 #
-# This script kickstarts the build process for a basic server instance.
+# kickstarts build process for a basic server instance.
 #
 # OS: debian 11
 
@@ -14,6 +14,8 @@ if [ $# -eq 0 ]
     err "ERR | -FQDN -HOSTNAME -SSH_PORT -CERTBOT_EMAIL"
     exit 1
 fi
+
+DRY_RUN=TRUE
 
 FQDN=$1
 HOSTNAME=$2

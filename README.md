@@ -1,1 +1,1 @@
-a lot of bash to do things for your. bjorg will do for you.
+a lot of bash to do things for you. bjorg will do for you.
