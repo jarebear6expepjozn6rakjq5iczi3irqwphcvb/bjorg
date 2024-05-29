@@ -4,6 +4,9 @@ set +o history
 
 echo "SETUP UP HOSTS NOW OK THANKS"
 
+echo "Getting default ethernet interface..."
+interface=$(ip -br l | awk '$1 !~ "lo|vir|wl" { print $1}')
+
 # Extract public v4 and v6 IP
 ipv6=$(echo "$(/sbin/ip -o -6 route show to default)" | awk '{print $3}')
 ipv4=$(echo "$(/sbin/ip -o -4 route show to default)" | awk '{print $3}')
