@@ -46,22 +46,22 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   . nginx 
-  . php
+#  . php
 fi
 
-read -p "MySQL? " -n 1 -r
-echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  . mysql.sh
-fi
+#read -p "MySQL? " -n 1 -r
+#echo    # (optional) move to a new line
+#if [[ $REPLY =~ ^[Yy]$ ]]
+#then
+#  . mysql
+#fi
 
-read -p "Python? " -n 1 -r
-echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  . python.sh
-fi
+#read -p "Python? " -n 1 -r
+#echo    # (optional) move to a new line
+#if [[ $REPLY =~ ^[Yy]$ ]]
+#then
+#  . python
+#fi
 
 echo "Activating firewall"
 yes | ufw enable

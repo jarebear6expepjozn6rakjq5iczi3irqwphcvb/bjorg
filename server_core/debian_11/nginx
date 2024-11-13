@@ -2,7 +2,7 @@
 HISTSIZE=0
 set +o history
 
-apt update && apt install -y nginx certbot python-certbot-nginx
+apt update && apt install -y nginx certbot python3-certbot-nginx
 
 # back up files before fsking them
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.before.bjorg
@@ -18,3 +18,10 @@ sed -i 's/server_name _.*/server_name '"$FQDN"';/' /etc/nginx/sites-available/de
 # update firewall rules to allow connection
 ufw allow 80/tcp
 ufw allow 443/tcp
+
+service nginx stop
+service nginx start
+
+# Request SSL
+echo "Setting up SSL ..."
+certbot -n --agree-tos --email "$CERTBOT_EMAIL" --authenticator webroot -w /var/www/html/ --installer nginx --redirect --hsts --uir --domain "$FQDN"
