@@ -18,7 +18,6 @@ echo "$HOSTNAME" > /etc/hostname
 cat <<EOT >> /etc/hosts
 
 # public entries
-# TODO add support for subdomains some day probably
 $ipv6 $HOSTNAME.$FQDN $HOSTNAME
 $ipv4 $HOSTNAME.$FQDN $HOSTNAME
 EOT

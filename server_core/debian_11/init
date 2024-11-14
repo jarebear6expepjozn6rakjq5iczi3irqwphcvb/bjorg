@@ -35,10 +35,10 @@ apt-get install -y unattended-upgrades build-essential git gnupg autossh
 yes | ufw reset
 
 # Do hosts things
-. hosts
+. "$CWD"/hosts
 
 # Do users stuff
-. users
+. "$CWD"/users
 
 # Lock SSH access down
 . "$CWD"/ssh
