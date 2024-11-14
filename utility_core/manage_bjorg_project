@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+HISTSIZE=0
+set +o history
+#
+# Install, update, and delete projects from git-able URL's and creates a bjorg-managable package.
+# Project should have a .bjorg/ directory @root containing build instructions
+#
+# Built for...
+# OS: debian 11
+
+## Set some messy path variables
+## This assumes you are where we think you are...
+#BJORG_CORE=${PWD%/*}
+#PROJECT_CORE="$BJORG_CORE"/project_core
+#PROJECT_PATH="$PROJECT_CORE"/"$PROJECT_NAME"
+#PROJECT_SOURCE_PATH="$PROJECT_PATH"/src
+#
+## make project directory in project_core with associated conf
+#mkdir "$PROJECT_PATH"
+#mkdir "$PROJECT_SOURCE_PATH"
+## probably need more thought on the config handling...
+#touch "$PROJECT_PATH"/bjorg.ini
+#cat <<EOT > "$PROJECT_PATH"/bjorg.ini
+#PROJECT_NAME=$PROJECT_NAME
+#FQDN=$FQDN
+#GIT_URL=$GIT_URL
+#CONTACT_EMAIL=$CONTACT_EMAIL
+#EOT
+#
+## clone project and extract bjorg components
+#git clone "$GIT_URL" "$PROJECT_SOURCE_PATH"
+#mv "$PROJECT_SOURCE_PATH"/.bjorg/* "$PROJECT_PATH"
+#rmdir "$PROJECT_SOURCE_PATH"/.bjorg
