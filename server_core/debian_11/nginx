@@ -9,9 +9,9 @@ mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.before.bjorg
 mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.before.bjorg
 
 # spew the template files in to place
-cat "$PWD"/templates/index.html > /var/www/html/index.html
-cat "$PWD"/templates/nginx/nginx.conf > /etc/nginx/nginx.conf
-cat "$PWD"/templates/nginx/sites-available/default > /etc/nginx/sites-available/default
+cat "$CWD"/templates/index.html > /var/www/html/index.html
+cat "$CWD"/templates/nginx/nginx.conf > /etc/nginx/nginx.conf
+cat "$CWD"/templates/nginx/sites-available/default > /etc/nginx/sites-available/default
 # update FQDN
 sed -i 's/server_name _.*/server_name '"$FQDN"';/' /etc/nginx/sites-available/default
 

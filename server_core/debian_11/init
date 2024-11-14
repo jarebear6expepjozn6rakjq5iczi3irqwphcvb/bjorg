@@ -41,7 +41,7 @@ yes | ufw reset
 . users
 
 # Lock SSH access down
-. ssh
+. "$CWD"/ssh
 
 read -p "Web?" -n 1 -r
 echo    # (optional) move to a new line
