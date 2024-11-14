@@ -8,7 +8,6 @@ echo "Getting default ethernet interface..."
 interface=$(ip -br l | awk '$1 !~ "lo|vir|wl" { print $1}')
 
 # Extract public v4 and v6 IP
-# TODO a better job extracting
 ipv4=$(echo "$(/sbin/ip addr show)" | grep -oP 'inet \K[\d.]+' | grep -v '127.0.0.1')
 ipv6=$(echo "$(/sbin/ip -6 addr)" | grep inet6 | awk -F '[ \t]+|/' '{print $3}' | grep -v ^::1 | grep -v ^fe80)
 

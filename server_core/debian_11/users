@@ -16,7 +16,6 @@ cp -a /root/bjorg-master/bjorg /home/"$HOSTNAME"
 echo "$PASSWORD" > /home/"$HOSTNAME"/bjorg/auth_core/"$HOSTNAME"_local_auth
 
 # Be really naughty and allow free sudo
-# TODO be better and limit free sudo
 echo "$HOSTNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Transplant sshkey for user

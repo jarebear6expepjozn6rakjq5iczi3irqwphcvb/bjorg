@@ -24,6 +24,8 @@ CERTBOT_EMAIL=$4
 
 PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 63)
 
+CWD=$(pwd)
+
 apt-get update && apt-get -y upgrade
 apt-get install -y unattended-upgrades build-essential git gnupg autossh
 

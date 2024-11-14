@@ -2,7 +2,13 @@
 HISTSIZE=0
 set +o history
 
+# assumes access only via ipv4 because that is the only one i care about right now
+# (todo v6)
+
 file=/etc/ssh/sshd_config
+
+# back up config first
+cp $file /etc/ssh/ssh_config.before.bjorg
 
 # do not allow root to log in
 sed -i 's/PermitRootLogin .*/PermitRootLogin no/' $file
