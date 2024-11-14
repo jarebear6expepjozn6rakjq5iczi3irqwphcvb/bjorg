@@ -15,6 +15,8 @@ cat "$CWD"/templates/sites-available/default > /etc/nginx/sites-available/defaul
 # update FQDN
 sed -i 's/server_name _.*/server_name '"$FQDN"';/' /etc/nginx/sites-available/default
 
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
 # update firewall rules to allow connection
 ufw allow 80/tcp
 ufw allow 443/tcp
