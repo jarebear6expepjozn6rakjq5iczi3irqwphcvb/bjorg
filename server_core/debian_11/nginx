@@ -15,7 +15,7 @@ cat "$CWD"/templates/default > /etc/nginx/sites-available/default
 # update FQDN
 sed -i 's/server_name _.*/server_name '"$FQDN"';/' /etc/nginx/sites-available/default
 
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+#ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # update firewall rules to allow connection
 ufw allow 80/tcp
@@ -26,4 +26,4 @@ service nginx start
 
 # Request SSL
 echo "Setting up SSL ..."
-certbot -n --agree-tos --email "$CERTBOT_EMAIL" --authenticator webroot -w /var/www/html/ --installer nginx --redirect --hsts --uir --domain "$FQDN"
+certbot -n --agree-tos --email "$CERTBOT_EMAIL" --authenticator webroot -w /var/www/html/ --installer nginx --redirect --hsts --domain "$FQDN"
