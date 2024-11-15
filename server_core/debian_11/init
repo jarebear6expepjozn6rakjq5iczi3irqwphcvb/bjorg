@@ -43,13 +43,16 @@ yes | ufw reset
 # Lock SSH access down
 . "$CWD"/ssh
 
-read -p "Web?" -n 1 -r
-echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  . nginx 
+# Install and configure nginx
+. "$CWD"/nginx
+
+#read -p "Web?" -n 1 -r
+#echo    # (optional) move to a new line
+#if [[ $REPLY =~ ^[Yy]$ ]]
+#then
+#  . nginx
 #  . php
-fi
+#fi
 
 #read -p "MySQL? " -n 1 -r
 #echo    # (optional) move to a new line
